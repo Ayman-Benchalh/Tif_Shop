@@ -1,34 +1,30 @@
-@extends('indexPage')
-@section('title')
-    Tif_SHop
-@endsection
-@section('styline')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ url('image/shops.png') }}" type="image/x-icon">
+    <title>@yield('title')</title>
+    
+
+    <link rel="stylesheet" href=" {{ url('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/templatemo.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/custom.css') }}">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{{ url('assets/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-<link rel="stylesheet" href=" {{ url('assets/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ url('assets/css/templatemo.css') }}">
-<link rel="stylesheet" href="{{ url('assets/css/custom.css') }}">
-
-<!-- Load fonts style after rendering the layout styles -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-<link rel="stylesheet" href="{{ url('assets/css/fontawesome.min.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--
-
-@endsection
-@section('content')
-<div class="content">
+   @yield('styline')
  
-    {{-- <a href="{{ route('CreateAccount.page') }}">Create Account</a>
-    <a href="{{ route('login.page') }}">Login</a> --}}
-    Start Top Nav -->
-  
-
+</head>
+<body>   
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Tif_SHop 
+            <a class="navbar-brand text-success logo h1 align-self-center" >
+                 Ben SHop 
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,38 +35,51 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{{ route('shope.page') }}">Home</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('About.page') }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ route('Contact.page') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    
-                    
-                    <a class="nav-icon position-relative text-decoration-none " style="color:#9BCF53" href="{{ route('login.page') }}">
-                        <i class="fa fa-fw fa-user mr-3 fs-4"></i>
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        {{-- <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div> --}}
+                    </div>
+
+                    {{-- <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                    </a> --}}
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ route('login.page') }}">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
 
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="{{ route('CreateAccount.page') }}">
-                        <i class="fa-solid fa-user-plus mr-3 fs-4"></i>
-                       
-                    </a>
+                    {{-- <a class="nav-icon position-relative text-decoration-none fw-bold fs-5" style="font-weight:700 ;color:#9BCF53 "  href="{{ route('logOUt') }}">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                         <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                         <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                        </svg>
+                    </a> --}}
                 </div>
             </div>
 
         </div>
-    </nav>
-    <!-- Close Header -->
+    </nav>     
+<div class="content">
+ 
 
-    <!-- Modal -->
+  
+
+
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
@@ -381,14 +390,12 @@
 
     </footer>
     <!-- End Footer -->
-
-    <!-- Start Script -->
     <script src=" {{ url('assets/js/jquery-1.11.0.min.js') }}"></script>
     <script src="{{ url('assets/js/jquery-migrate-1.2.1.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('assets/js/templatemo.js') }}"></script>
     <script src="{{ url('assets/js/custom.js') }}"></script>
-    <!-- End Script -->
+</body>
+</html>
     
-</div>
-@endsection
+

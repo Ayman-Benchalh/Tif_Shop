@@ -22,6 +22,8 @@ Route::get('/CreateAccount', [GlobalController::class,'CreateAccount'])->name('C
 Route::post('/CreateAccountSend', [GlobalController::class,'CreateAccountPost'])->name('CreateAccountPost.page');
 
 Route::get('/Shop',[GlobalController::class,'shop'])->name('shope.page');
+Route::get('/About',[GlobalController::class,'About'])->name('About.page');
+Route::get('/Contact',[GlobalController::class,'Contact'])->name('Contact.page');
 
 Route::post('/sendUser', [GlobalController::class,'sendUser'])->name('sendUser');
 Route::get('/PrintUser', [GlobalController::class,'PrintUser'])->name('PrintUser');

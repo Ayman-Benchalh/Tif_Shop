@@ -145,7 +145,7 @@ class GlobalController extends Controller
       Auth::logout();
       return to_route('login.page');
    }
-   public function goToPageVerf($token , $email){
+   public function goToPageVerf($email){
       
       session(['emailVerfi'=>true]);
       if($email==session()->get('email')){
@@ -160,5 +160,13 @@ class GlobalController extends Controller
 
 
 
+   }
+   public function About(){
+
+      return view('About');
+   }
+   public function Contact(){
+
+      return view('Contact');
    }
 }

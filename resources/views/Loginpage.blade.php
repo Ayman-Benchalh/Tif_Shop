@@ -1,4 +1,4 @@
-@extends('indexPage')
+@extends('index2')
 @section('title')
 Login
 @endsection

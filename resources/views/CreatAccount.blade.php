@@ -1,4 +1,4 @@
-@extends('indexPage')
+@extends('index2')
 @section('title')
 Create Account
 @endsection
