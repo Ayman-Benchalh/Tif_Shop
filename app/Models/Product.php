@@ -10,9 +10,12 @@ class Product extends Model
 {
     use HasFactory;
   protected $fillable=[
+    'imageProd',
     'nameProd',
     'desination',
+    'Categories',
     'prix',
+    'stars'
     
   ];
   public function Command(): HasOne

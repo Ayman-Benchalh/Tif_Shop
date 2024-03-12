@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -131,8 +132,10 @@ class GlobalController extends Controller
 
 
    public function shop(){
+      $product = Product::all();
 
-      return view('shopPage');
+
+      return view('shopPage' ,['product'=>$product]);
    }
    public function VerfiMail(){
 
@@ -140,7 +143,6 @@ class GlobalController extends Controller
    }
    public function logOUt(){
      
-      // Session::where('email_User',session()->get('email'))->delete(); 
       session()->flush();
       Auth::logout();
       return to_route('login.page');
@@ -169,4 +171,44 @@ class GlobalController extends Controller
 
       return view('Contact');
    }
+   public function InserdataView(){
+
+      return view('InsertProduct');
+   }
+   public function Inserdataprod(Request $request){
+      $image=request()->image;
+      $nameProd=request()->nameProd;
+      $desination=request()->desination;
+      $Categories=request()->Categories;
+      $prix=request()->prix;
+      $stars=request()->stars;
+
+      // Product::create([
+      //    'imageProd'=>$imageProd,
+      //    'nameProd'=>$nameProd,
+      //    'desination'=>$desination,
+      //    'Categories'=>$Categories,
+      //    'prix'=>$prix,
+      //    'stars'=>$stars,
+
+      // ]);
+   //    $request->validate([
+   //       'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+   //   ]);
+ 
+     $imageName = time().'.'.$request->image->extension();  
+  
+     $request->image->move(public_path('images'), $imageName);
+ 
+     $product = new Product();
+     $product->imageProd = '/images/'.$imageName;
+     $product->nameProd = $nameProd;
+     $product->desination = $desination;
+     $product->Categories = $Categories;
+     $product->prix = $prix;
+     $product->stars = $stars;
+     $product->save();
+      return 'data in inserted';
+   }
+
 }

@@ -37,7 +37,8 @@
     <!-- Start Contact -->
     <div class="container py-5">
         <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
+            <form class="col-md-9 m-auto" method="post"  action="https://formsubmit.co/aymanbenchalh53@gmail.com" role="form">
+                @csrf
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="inputname">Name</label>
@@ -64,6 +65,6 @@
             </form>
         </div>
     </div>
-    <!-- End Contact -->
+
 
 @endsection

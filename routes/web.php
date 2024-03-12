@@ -25,6 +25,9 @@ Route::get('/Shop',[GlobalController::class,'shop'])->name('shope.page');
 Route::get('/About',[GlobalController::class,'About'])->name('About.page');
 Route::get('/Contact',[GlobalController::class,'Contact'])->name('Contact.page');
 
+Route::post('/Inserdata',[GlobalController::class,'Inserdataprod'])->name('Inserdataprod.page');
+Route::get('/InserdataView',[GlobalController::class,'InserdataView'])->name('InserdataView.page');
+
 Route::post('/sendUser', [GlobalController::class,'sendUser'])->name('sendUser');
 Route::get('/PrintUser', [GlobalController::class,'PrintUser'])->name('PrintUser');
 
