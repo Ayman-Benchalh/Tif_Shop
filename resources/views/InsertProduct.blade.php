@@ -196,7 +196,9 @@ Create Account
             <h2 class="animation a1">Insert Prodcut</h2>
             <h4 class="animation a2">inser any product you went </h4>
           </div>
-
+          @if(session()->has('success'))
+          <span class=" animation a2 success" >{{ session()->get('success') }} </span>
+          @endif
             <form action="{{ route('Inserdataprod.page') }}" method="post"  enctype="multipart/form-data">
                 @csrf
                 <div class="form">

@@ -36,3 +36,6 @@ Route::get('/logOUt',[GlobalController::class,'logOUt'])->name('logOUt');
 
 Route::get('/VerfiMail',[GlobalController::class,'VerfiMail'])->name('VerfiMail');
 Route::get('/verficACCoutn/{token}/{email}',[GlobalController::class,'goToPageVerf'])->name('verficACCoutn.page');
+
+
+Route::get('/shopSingle',[GlobalController::class,'shopSingle'])->name('shopSingle');

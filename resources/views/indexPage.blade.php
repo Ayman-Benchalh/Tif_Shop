@@ -14,7 +14,10 @@
      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{{ url('assets/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url('assets/css/fontawesome.min.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/css/slick.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('assets/css/slick-theme.css') }}">
 
    @yield('styline')
  
@@ -78,17 +81,17 @@
     @yield('content')
     
 
-    <!-- Start Footer -->
+
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">  Ben SHop </h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            Tiflet, Morocco 
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
@@ -96,7 +99,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:info@company.com">Aymanbenchalh@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -177,5 +180,38 @@
     <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('assets/js/templatemo.js') }}"></script>
     <script src="{{ url('assets/js/custom.js') }}"></script>
+    
+    <script src="{{ url('assets/js/slick.min.js') }}"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
+        });
+    </script>
 </body>
 </html>

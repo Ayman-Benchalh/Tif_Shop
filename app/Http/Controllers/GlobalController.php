@@ -183,18 +183,6 @@ class GlobalController extends Controller
       $prix=request()->prix;
       $stars=request()->stars;
 
-      // Product::create([
-      //    'imageProd'=>$imageProd,
-      //    'nameProd'=>$nameProd,
-      //    'desination'=>$desination,
-      //    'Categories'=>$Categories,
-      //    'prix'=>$prix,
-      //    'stars'=>$stars,
-
-      // ]);
-   //    $request->validate([
-   //       'image' => 'required|image|mimes:jpeg,png,jpg,gif',
-   //   ]);
  
      $imageName = time().'.'.$request->image->extension();  
   
@@ -208,7 +196,16 @@ class GlobalController extends Controller
      $product->prix = $prix;
      $product->stars = $stars;
      $product->save();
-      return 'data in inserted';
+      return view('InsertProduct')->with('success',' insert data is success ');
    }
+
+   public function shopSingle(){
+
+        
+      return view('SinglPage');
+   }
+
+
+
 
 }
