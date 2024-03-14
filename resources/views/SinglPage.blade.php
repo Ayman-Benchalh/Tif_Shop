@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="{{ $dataProdOne->imageProd }}" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -42,17 +42,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_01.jpg" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_01.jpg') }}" alt="Product Image 1">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_02.jpg" alt="Product Image 2">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_02.jpg') }}" alt="Product Image 2">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_03.jpg" alt="Product Image 3">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_03.jpg') }}" alt="Product Image 3">
                                             </a>
                                         </div>
                                     </div>
@@ -64,17 +64,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_04.jpg" alt="Product Image 4">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_04.jpg') }}" alt="Product Image 4">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_05.jpg" alt="Product Image 5">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_05.jpg') }}" alt="Product Image 5">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_06.jpg" alt="Product Image 6">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_06.jpg') }}" alt="Product Image 6">
                                             </a>
                                         </div>
                                     </div>
@@ -86,17 +86,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_07.jpg" alt="Product Image 7">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_07.jpg') }}" alt="Product Image 7">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_08.jpg" alt="Product Image 8">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_08.jpg') }}" alt="Product Image 8">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_09.jpg" alt="Product Image 9">
+                                                <img class="card-img img-fluid" src="{{ url('assets/img/product_single_08.jpg') }}" alt="Product Image 9">
                                             </a>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">Active Wear</h1>
-                            <p class="h3 py-2">$25.00</p>
+                            <p class="h3 py-2"> $ {{ $dataProdOne->prix }}</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
@@ -161,7 +161,8 @@
                                 <li>Excepteur sint</li>
                             </ul>
 
-                            <form action="" method="GET">
+                            <form action="{{ route('bUy.page') }}" method="post">
+                                @csrf
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
@@ -169,10 +170,10 @@
                                             <li class="list-inline-item">Size :
                                                 <input type="hidden" name="product-size" id="product-size" value="S">
                                             </li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">S</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">M</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">L</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span></li>
+                                            <li class="list-inline-item" onclick="changersize()"><span class="btn btn-success btn-size" >S</span></li>
+                                            <li class="list-inline-item"onclick="changersize()"><span class="btn btn-success btn-size">M</span></li>
+                                            <li class="list-inline-item"onclick="changersize()"><span class="btn btn-success btn-size">L</span></li>
+                                            <li class="list-inline-item"onclick="changersize()"><span class="btn btn-success btn-size">XL</span></li>
                                         </ul>
                                     </div>
                                     <div class="col-auto">
@@ -192,7 +193,8 @@
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                        {{-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button> --}}
+                                        <a  class="btn btn-success btn-lg" href='{{ route('Cart.page') }}'>Add To Cart</a>
                                     </div>
                                 </div>
                             </form>
@@ -214,83 +216,78 @@
 
             <!--Start Carousel Wrapper-->
             <div id="carousel-related-product">
+                @foreach ($get_All_data_Prod as $One_Product)
+                        <div class="p-2 pb-3">
+                                    <div class="product-wap card rounded-0">
+                                        <div class="card rounded-0">
+                                            <img class="card-img rounded-0 img-fluid" src="{{ $One_Product->imageProd }}">
+                                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                                <ul class="list-unstyled">
+                                                   
+                                                    <li><a class="btn btn-success text-white mt-2"href="{{ route('shopSingle.page',['idProd'=>$One_Product->idProduct]) }}"><i class="far fa-eye"></i></a></li>
+                                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="shop-single.html" class="h3 text-decoration-none">Red Clothing</a>
+                                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                                <li>M/L/X/XL</li>
+                                                <li class="pt-2">
+                                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                                </li>
+                                            </ul>
+                                            <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                                <li>
 
-                <div class="p-2 pb-3">
-                    <div class="product-wap card rounded-0">
-                        <div class="card rounded-0">
-                            <img class="card-img rounded-0 img-fluid" src="assets/img/shop_08.jpg">
-                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                <ul class="list-unstyled">
-                                    <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <a href="shop-single.html" class="h3 text-decoration-none">Red Clothing</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>M/L/X/XL</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
-                            <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <p class="text-center mb-0">$20.00</p>
-                        </div>
-                    </div>
-                </div>
+                                                    @if ($One_Product->stars==1)
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    @elseif ($One_Product->stars==2)
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    @elseif ($One_Product->stars==3)
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    @elseif ($One_Product->stars==4)
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    @elseif ($One_Product->stars==5)
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                                    <i class="text-warning fa fa-star"></i>
+                                        
+                                                    @endif
+                                
+                                                </li>
+                                            </ul>
+                                            <p class="text-center mb-0">${{ $One_Product->prix }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                @endforeach
+            
 
        
-                <div class="p-2 pb-3" >
-                    <div class="product-wap card rounded-0">
-                        <div class="card rounded-0">
-                            <img class="card-img rounded-0 img-fluid" src="assets/img/shop_09.jpg">
-                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                <ul class="list-unstyled">
-                                    <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <a href="shop-single.html" class="h3 text-decoration-none">White Shirt</a>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                <li>M/L/X/XL</li>
-                                <li class="pt-2">
-                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                </li>
-                            </ul>
-                            <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <p class="text-center mb-0">$25.00</p>
-                        </div>
-                    </div>
-                </div>
+                
 
 
             </div>
@@ -298,9 +295,8 @@
 
         </div>
     </section>
-    <!-- End Article -->
-    <!-- End Article -->
+ 
 
-  
+
 
 @endsection

@@ -19,6 +19,17 @@
     <link rel="stylesheet" type="text/css" href="{{ url('assets/css/slick.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/css/slick-theme.css') }}">
 
+
+   <style>
+     ::-webkit-scrollbar {
+            width: 8px;
+        }::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }::-webkit-scrollbar-thumb {
+            background: #888;
+        }::-webkit-scrollbar-thumb:hover {
+            background: #555; }
+   </style>   
    @yield('styline')
  
 </head>
@@ -58,7 +69,7 @@
                         </div> --}}
                     </div>
 
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ route('Cart.page') }}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
@@ -213,5 +224,12 @@
             ]
         });
     </script>
+      <script>
+        const changersize=(event)=>{
+            const changeSize=document.getElementById('product-size');
+            console.log(event);
+        }
+        
+      </script>
 </body>
 </html>

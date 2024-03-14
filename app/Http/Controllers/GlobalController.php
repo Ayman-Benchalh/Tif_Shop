@@ -199,10 +199,22 @@ class GlobalController extends Controller
       return view('InsertProduct')->with('success',' insert data is success ');
    }
 
-   public function shopSingle(){
-
+   public function shopSingle($id_Product){
+    $data_Prod_One = Product::where('idProduct',$id_Product)->first();
+    $get_All_data_Prod = Product::all();
+   
         
-      return view('SinglPage');
+      return view('SinglPage',['dataProdOne'=>$data_Prod_One,'get_All_data_Prod'=>$get_All_data_Prod]);
+   }
+   public function CartPage(){
+  
+        
+      return view('CartPage');
+   }
+   public function bUy(){
+  
+        
+      return view('CartPage');
    }
 
 
