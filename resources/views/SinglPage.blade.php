@@ -163,24 +163,26 @@
 
                             <form action="{{ route('bUy.page') }}" method="post">
                                 @csrf
+                                <input type="hidden" name="prix" value="{{ $dataProdOne->prix }}">
+                                <input type="hidden" name="idProd" value="{{ $dataProdOne->idProduct}}">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item">Size :
-                                                <input type="hidden" name="product-size" id="product-size" value="S">
+                                                <input type="hidden" name="product_size" id="product-size" value="S">
                                             </li>
-                                            <li class="list-inline-item" onclick="changersize()"><span class="btn btn-success btn-size" >S</span></li>
-                                            <li class="list-inline-item"onclick="changersize()"><span class="btn btn-success btn-size">M</span></li>
-                                            <li class="list-inline-item"onclick="changersize()"><span class="btn btn-success btn-size">L</span></li>
-                                            <li class="list-inline-item"onclick="changersize()"><span class="btn btn-success btn-size">XL</span></li>
+                                            <li class="list-inline-item" ><span   class="btn btn-success btn-size" >S</span></li>
+                                            <li class="list-inline-item" ><span class="btn btn-success btn-size">M</span></li>
+                                            <li class="list-inline-item" ><span  class="btn btn-success btn-size">L</span></li>
+                                            <li class="list-inline-item" ><span  class="btn btn-success btn-size">XL</span></li>
                                         </ul>
                                     </div>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 Quantity
-                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                                <input type="hidden" name="product_quanity" id="product-quanity" value="1">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
@@ -295,7 +297,7 @@
 
         </div>
     </section>
- 
+
 
 
 

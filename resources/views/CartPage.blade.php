@@ -177,20 +177,23 @@
                          <div class="col"><h4><b>Shopping Cart</b></h4></div>
                          <div class="col align-self-center text-right text-muted">3 items</div>
                      </div>
-                 </div>    
-                    <div class="row border-top border-bottom">
+                 </div>  
+                 @foreach ($dataCommandForOneUser as $datacomd)
+                     <div class="row border-top border-bottom">
                             <div class="row main align-items-center">
                                 <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
                                 <div class="col">
-                                    <div class="row text-muted">Shirt</div>
-                                    <div class="row">Cotton T-shirt</div>
+                                    <div class="row text-muted">Prod Type</div>
+                                    <div class="row"></div>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="border">1</a>
+                                    <a href="#" class="border">{{ $datacomd->quantite }}</a>
                                 </div>
-                                <div class="col">&dollar; 44.00 <span class="close">&#10005;</span></div>
+                                <div class="col">&dollar;{{$datacomd->TotelPrix}}<span class="close">&#10005;</span></div>
                             </div>
                     </div>
+                 @endforeach  
+                    
 
                  <div class="back-to-shop"><a href="{{ route('shope.page') }}">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
              </div>
@@ -199,7 +202,7 @@
                  <hr>
                  <div class="row">
                      <div class="col" style="padding-left:0;">ITEMS 3</div>
-                     <div class="col text-right">&dollar; 132.00</div>
+                     <div class="col text-right">&dollar;{{$datacomd->TotelPrix }}</div>
                  </div>
                  <form>
                      <p>SHIPPING</p>

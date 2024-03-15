@@ -71,7 +71,13 @@
 
                     <a class="nav-icon position-relative text-decoration-none" href="{{ route('Cart.page') }}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        @if(session()->has('totalCommandUser'))
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{session()->get('totalCommandUser')}}</span>
+                        @elseif (!session()->has('totalCommandUser')) 
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span> 
+                        @endif
+                     
+                        
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
@@ -223,13 +229,14 @@
                 }
             ]
         });
+
     </script>
-      <script>
-        const changersize=(event)=>{
-            const changeSize=document.getElementById('product-size');
-            console.log(event);
-        }
-        
-      </script>
+    <script>
+                       
+      
+    </script>
+
+ @yield('script')
+      
 </body>
 </html>

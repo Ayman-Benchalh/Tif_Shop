@@ -46,7 +46,7 @@ class User extends Authenticatable
     ];
 
 
-    public function Command(): HasMany
+    public function command(): HasMany
     {
         return $this->hasMany(Command::class);
     }

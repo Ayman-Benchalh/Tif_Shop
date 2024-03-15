@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\belongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
@@ -18,8 +19,8 @@ class Product extends Model
     'stars'
     
   ];
-  public function Command(): HasOne
+  public function command(): HasOne
   {
-        return $this->hasOne(Command::class);
+        return $this->HasOne(Command::class);
   }
 }

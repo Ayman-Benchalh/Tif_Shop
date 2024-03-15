@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Command;
 use App\Models\Product;
 use App\Models\Session;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ use function Laravel\Prompts\password;
 class GlobalController extends Controller
 {
    public function  firstPage(){
-
+   session()->flush();
     return view('firstpage');
    }
    public function  login(){
@@ -38,6 +39,7 @@ class GlobalController extends Controller
       $values=['email'=>$email,'password'=>$password];
       if(Auth::attempt($values)){
          $dataUser = User::where('email',$email)->first();
+       
          $datasession =  Session::where('email_User',$dataUser->email)->first();
 
 
@@ -46,7 +48,6 @@ class GlobalController extends Controller
                'fisrtName'=>$dataUser->fisrtName ,
                'lastName'=>$dataUser->lastName,
                'email'=>$dataUser->email,
-             
             ]);
 
          // dd(session()->all() ,$datasession );
@@ -133,7 +134,8 @@ class GlobalController extends Controller
 
    public function shop(){
       $product = Product::all();
-
+      $dataCommanUser = Command::where('idUser',session()->get('idUser'))->count();
+      session(['totalCommandUser'=>$dataCommanUser]);
 
       return view('shopPage' ,['product'=>$product]);
    }
@@ -207,14 +209,30 @@ class GlobalController extends Controller
       return view('SinglPage',['dataProdOne'=>$data_Prod_One,'get_All_data_Prod'=>$get_All_data_Prod]);
    }
    public function CartPage(){
-  
-        
-      return view('CartPage');
+      $dataCommandForOneUser=Command::where('idUser',session()->get('idUser'))->get();
+
+     
+      return view('CartPage',['dataCommandForOneUser'=>$dataCommandForOneUser]);
    }
    public function bUy(){
   
-        
-      return view('CartPage');
+        $product_size=request()->product_size;
+        $product_quanity=request()->product_quanity;
+        $idProd=request()->idProd;
+        $prix=request()->prix;
+        $totalPrix=$prix*$product_quanity;
+
+      Command::create([
+         'idProduct'=>$idProd,
+         'idUser'=>session()->get('idUser'),
+         'quantite'=>$product_quanity,
+         'dateCommand'=>date('Y-m-d H:i:s'),
+         'statut'=>'not Paid',
+         'Size'=>$product_size,
+         'TotelPrix'=>$totalPrix,
+      ]);
+      
+      return to_route('shope.page')->with('success','command buy success ');
    }
 
 

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\belongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Command extends Model
@@ -13,17 +13,19 @@ class Command extends Model
     protected $fillable=[
         'idProduct',
         'idUser',
-        'quantitePro',
+        'quantite',
         'dateCommand',
-        'statut'
+        'statut',
+        'Size',
+        'TotelPrix',
         
       ];
-    public function User(): HasOne
+    public function user(): HasOne
     {
           return $this->hasOne(User::class);
     }
-    public function Product(): HasMany
+    public function product(): belongsTo
     {
-          return $this->HasMany(Product::class);
+          return $this->belongsTo(Product::class);
     }
 }
