@@ -178,7 +178,12 @@
                          <div class="col align-self-center text-right text-muted">{{ session()->get('totalCommandUser')}} items</div>
                      </div>
                  </div>  
-                 {{-- {{ $dataCommandForOneUser->product}} --}}
+          
+                 @if (session()->has('success'))
+                        <div class="alert alert-success">
+                                <strong>Success! </strong> {{ session()->get('success') }} 
+                        </div>
+                 @endif
                  
                  @php $totalPrix = 0 @endphp
                  @foreach ($dataCommandForOneUser as $datacomd)
@@ -194,7 +199,19 @@
                                 <div class="col">
                                     <a href="#" class="border">{{ $datacomd->quantite}}</a>
                                 </div>
-                                <div class="col">&dollar;{{$datacomd->TotelPrix}}  <span class="close">&#10005;</span></div>
+                                <div class="col d-flex flex-row justify-content-center align-items-center gap-5">
+                                    <div class="row" >&dollar;{{$datacomd->TotelPrix}} </div>
+                                    <form action="{{route('deleteOneprod')}}" method="post" class="row ">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="hidden" name="idCommand" value="{{$datacomd->idCommand }}">
+                                        <button style="border: none  ;border-radius: 10px" class="btn-danger" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                                      </svg>
+                                    </button>
+                                    </form>
+                                     </div>
                             </div>
                     
                             

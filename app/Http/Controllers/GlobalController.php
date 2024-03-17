@@ -231,17 +231,14 @@ class GlobalController extends Controller
    }
    public function CartPage(){
       $dataCommandForOneUser=Command::where('idUser',session()->get('idUser'))->get();
-      // $dd=Command::findOrFail(5);   
-      // dd($dataCommandForOneUser->product->idProduct);
-// dd(session()->all());
-      return view('CartPage',['dataCommandForOneUser'=>$dataCommandForOneUser]);
-      // $command = Command::where('idUser',session()->get('idUser'))->first();
-      //   $prod= Product::find($command->idProduct);
-      // $products = $command->products->idProduct;
-      
-     
 
-   
+      return view('CartPage',['dataCommandForOneUser'=>$dataCommandForOneUser]);
+
+   }
+   public function deleteOneprod(){
+    $dt=  Command::where('idCommand',request()->idCommand)->delete();
+ 
+    return back()->with('success','commad is deleted success');
    }
 
 

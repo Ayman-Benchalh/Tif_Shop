@@ -43,3 +43,5 @@ Route::get('/shopSingle/idProduct={idProd}',[GlobalController::class,'shopSingle
 
 Route::get('/CartPage',[GlobalController::class,'CartPage'])->name('Cart.page');
 Route::post('/bUy',[GlobalController::class,'bUy'])->name('bUy.page');
+
+Route::delete('/deleteOne',[GlobalController::class,'deleteOneprod'])->name('deleteOneprod');
