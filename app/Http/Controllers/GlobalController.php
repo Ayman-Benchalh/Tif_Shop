@@ -208,12 +208,7 @@ class GlobalController extends Controller
         
       return view('SinglPage',['dataProdOne'=>$data_Prod_One,'get_All_data_Prod'=>$get_All_data_Prod]);
    }
-   public function CartPage(){
-      $dataCommandForOneUser=Command::where('idUser',session()->get('idUser'))->get();
 
-     
-      return view('CartPage',['dataCommandForOneUser'=>$dataCommandForOneUser]);
-   }
    public function bUy(){
   
         $product_size=request()->product_size;
@@ -234,7 +229,20 @@ class GlobalController extends Controller
       
       return to_route('shope.page')->with('success','command buy success ');
    }
+   public function CartPage(){
+      $dataCommandForOneUser=Command::where('idUser',session()->get('idUser'))->get();
+      // $dd=Command::findOrFail(5);   
+      // dd($dataCommandForOneUser->product->idProduct);
+// dd(session()->all());
+      return view('CartPage',['dataCommandForOneUser'=>$dataCommandForOneUser]);
+      // $command = Command::where('idUser',session()->get('idUser'))->first();
+      //   $prod= Product::find($command->idProduct);
+      // $products = $command->products->idProduct;
+      
+     
 
+   
+   }
 
 
 

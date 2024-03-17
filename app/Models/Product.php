@@ -10,17 +10,18 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Product extends Model
 {
     use HasFactory;
-  protected $fillable=[
-    'imageProd',
-    'nameProd',
-    'desination',
-    'Categories',
-    'prix',
-    'stars'
-    
-  ];
-  public function command(): HasOne
-  {
-        return $this->HasOne(Command::class);
-  }
+    protected $table = 'products';
+    protected $primaryKey = 'idProduct';
+    protected $fillable=[
+      'imageProd',
+      'nameProd',
+      'desination',
+      'Categories',
+      'prix',
+      'stars'
+     ];
+  public function command()
+    {
+        return $this->belongsTo(Command::class,'idProduct');
+    }
 }

@@ -10,6 +10,12 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Command extends Model
 {
     use HasFactory;
+
+    protected $table='commands';
+    protected $primaryKey='idCommand';
+    protected $foreignkey=['idProduct'];
+
+
     protected $fillable=[
         'idProduct',
         'idUser',
@@ -18,14 +24,14 @@ class Command extends Model
         'statut',
         'Size',
         'TotelPrix',
-        
-      ];
+    ];
+
+    public function product()
+    {
+         return $this->belongsTo(Product::class,'idProduct');
+    }    
     public function user(): HasOne
     {
-          return $this->hasOne(User::class);
-    }
-    public function product(): belongsTo
-    {
-          return $this->belongsTo(Product::class);
+          return $this->hasOne(User::class,'idUser');
     }
 }
