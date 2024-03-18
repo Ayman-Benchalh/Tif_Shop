@@ -22,6 +22,7 @@
             font-family: sans-serif;
             font-size: 0.8rem;
             font-weight: bold;
+            padding: 30px;
         }
        
         .title{
@@ -195,6 +196,10 @@
                                 <div class="col">
                                     <div class="row text-muted">Prod Type</div>
                                     <div class="row">{{ $datacomd->product->nameProd}}</div>
+                                </div>
+                                <div class="col">
+                                    <div class="row text-muted">Size </div>
+                                    <div class="row">{{ $datacomd->Size}}</div>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="border">{{ $datacomd->quantite}}</a>

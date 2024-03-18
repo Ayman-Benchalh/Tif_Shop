@@ -45,3 +45,8 @@ Route::get('/CartPage',[GlobalController::class,'CartPage'])->name('Cart.page');
 Route::post('/bUy',[GlobalController::class,'bUy'])->name('bUy.page');
 
 Route::delete('/deleteOne',[GlobalController::class,'deleteOneprod'])->name('deleteOneprod');
+
+Route::get('/Profile',[GlobalController::class,'Profile'])->name('Profile.page');
+
+Route::put('/EditeProfile',[GlobalController::class,'EditeProfile'])->name('EditeProfile.page');
+Route::delete('/DeletProfile',[GlobalController::class,'DeleteProfle'])->name('DeletProfile.page');

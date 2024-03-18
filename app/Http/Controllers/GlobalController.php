@@ -210,26 +210,29 @@ class GlobalController extends Controller
    }
 
    public function bUy(){
+     
   
         $product_size=request()->product_size;
         $product_quanity=request()->product_quanity;
         $idProd=request()->idProd;
         $prix=request()->prix;
         $totalPrix=$prix*$product_quanity;
-
-      Command::create([
-         'idProduct'=>$idProd,
-         'idUser'=>session()->get('idUser'),
-         'quantite'=>$product_quanity,
-         'dateCommand'=>date('Y-m-d H:i:s'),
-         'statut'=>'not Paid',
-         'Size'=>$product_size,
-         'TotelPrix'=>$totalPrix,
-      ]);
-      
-      return to_route('shope.page')->with('success','command buy success ');
+        Command::create([
+           'idProduct'=>$idProd,
+           'idUser'=>session()->get('idUser'),
+           'quantite'=>$product_quanity,
+           'dateCommand'=>date('Y-m-d H:i:s'),
+           'statut'=>'not Paid',
+           'Size'=>$product_size,
+           'TotelPrix'=>$totalPrix,
+         ]);
+  
+         
+      return to_route('Cart.page')->with('success','Product is add to Cart');
    }
    public function CartPage(){
+      $dataCommanUser = Command::where('idUser',session()->get('idUser'))->count();
+      session()->put('totalCommandUser',$dataCommanUser);
       $dataCommandForOneUser=Command::where('idUser',session()->get('idUser'))->get();
 
       return view('CartPage',['dataCommandForOneUser'=>$dataCommandForOneUser]);
@@ -239,6 +242,50 @@ class GlobalController extends Controller
     $dt=  Command::where('idCommand',request()->idCommand)->delete();
  
     return back()->with('success','commad is deleted success');
+   }
+   public function Profile(){
+  $dataUser=User::where('idUser',session()->get('idUser'))->first();
+ 
+    return view('ProfilePage',['dataUser'=>$dataUser]);
+   }
+   public function EditeProfile(){
+      $Firstname=request()->Firstname;
+      $Lastname=request()->Lastname;
+      $email=request()->email;
+      $passwrod=request()->passwrod;     
+      request()->validate([
+                     'Firstname'=>['required','min:4'],
+                     'Lastname'=>['required','min:4'],
+                     'email'=>['email','required','min:4','exists:users,email']
+                  ]);
+      if($passwrod){
+            request()->validate([
+               'passwrod'=>['required','min:8']
+            ]);
+             User::where('idUser',session()->get('idUser'))->update([
+                     'fisrtName'=>$Firstname,
+                     'lastName'=>$Lastname,
+                     'email'=>$email,
+                     'password'=>hash::make($passwrod),
+               ]);
+               return to_route('Profile.page')->with('success','Your Profile is Edite success');
+       
+       
+      }else{
+               User::where('idUser',session()->get('idUser'))->update([
+                  'fisrtName'=>$Firstname,
+                  'lastName'=>$Lastname,
+                  'email'=>$email,
+
+            ]);
+
+            return to_route('Profile.page')->with('success','Your Profile is Edite success');
+      }
+    
+      dd($Firstname,$Lastname,$email,$passwrod);
+   }
+   public function DeleteProfle(){
+      dd('this is page delete');
    }
 
 

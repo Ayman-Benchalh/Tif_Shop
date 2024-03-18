@@ -79,7 +79,7 @@
                      
                         
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ route('Profile.page') }}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
 
                     </a>

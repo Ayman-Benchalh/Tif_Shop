@@ -127,7 +127,7 @@
                                             <ul class="list-unstyled">
                                                
                                                 <li><a class="btn btn-success text-white mt-2" href="{{ route('shopSingle.page',['idProd'=>$prod->idProduct]) }}"><i class="far fa-eye"></i></a></li>
-                                                <li><a class="btn btn-success text-white mt-2" href="{{ route('Cart.page') }}"><i class="fas fa-cart-plus"></i></a></li>
+                                                {{-- <li><a class="btn btn-success text-white mt-2" href="{{ route('Cart.page') }}"><i class="fas fa-cart-plus"></i></a></li> --}}
                                             </ul>
                                         </div>
                                     </div>
